@@ -1,0 +1,6 @@
+[submodule "kimpscan-backend"]
+	path = kimpscan-backend
+	url = https://github.com/a3magic3pocket/kimpscan-backend.git
+[submodule "kimpscan-web"]
+	path = kimpscan-web
+	url = https://github.com/a3magic3pocket/kimpscan-web.git
