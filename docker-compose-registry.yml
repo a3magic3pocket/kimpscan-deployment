@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  registry:
+    image: registry:2
+    ports:
+      - "5000:5000"   # 호스트의 5000번 포트를 컨테이너의 5000번 포트에 바인딩
+    volumes:
+      - registry_data:/var/lib/registry
+    networks:
+      - local_net
+
+networks:
+  local_net:
+    driver: bridge   # "bridge" 네트워크 드라이버를 사용하면, 해당 네트워크는 호스트와의 연결이 가능합니다.
+
+volumes:
+  registry_data:
+    driver: local

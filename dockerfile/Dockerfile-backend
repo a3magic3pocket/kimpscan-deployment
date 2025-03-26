@@ -5,7 +5,7 @@ FROM amazoncorretto:21-alpine3.20 AS builder
 WORKDIR /app
 
 # 필요한 소스 파일 복사
-COPY . .
+COPY ./kimpscan-backend .
 
 # Gradle wrapper 실행 (빌드)
 
@@ -22,4 +22,4 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar /app/spring.jar
 
 # Java 애플리케이션 실행
-CMD ["java", "-jar", "spring.jar"]
+CMD ["java",  "-Dspring.profiles.active=prod", "-jar", "spring.jar"]
