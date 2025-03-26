@@ -20,10 +20,8 @@ services:
     image: mariadb:lts-noble
     ports:
       - "3306:3306"
-    env_file:
-      - .env
     environment:
-      MARIADB_ROOT_PASSWORD: ${MY-MARIADB-ROOT-PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MY_MARIADB_ROOT_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
     extra_hosts:
