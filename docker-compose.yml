@@ -50,7 +50,7 @@ services:
       placement:
         constraints:
           - node.labels.role == kafka  # VM1에 배포
-  api:
+  web:
     image: 10.0.1.251:5000/kimpscan:0.0.1
     ports:
       - target: 8080
@@ -59,7 +59,22 @@ services:
         mode: host
     networks:
       - docker_net
-#    command: ["tail", "-f", "/dev/null"]
+    deploy:
+      replicas: 1  # Swarm 모드에서 서비스의 복제본 수를 설정 (여기서는 1개로 설정)
+      restart_policy:
+        condition: on-failure  # 실패 시 재시작 정책
+      placement:
+        constraints:
+          - node.labels.role == service  # VM1에 배포
+  api:
+    image: 10.0.1.251:5000/kimpscan-web:0.0.1
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+    networks:
+      - docker_net
     deploy:
       replicas: 1  # Swarm 모드에서 서비스의 복제본 수를 설정 (여기서는 1개로 설정)
       restart_policy:
