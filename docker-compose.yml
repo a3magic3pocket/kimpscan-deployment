@@ -3,8 +3,6 @@ version: '3.8'  # Docker Compose file version
 services:
   db:
     image: mariadb:lts-noble
-    ports:
-      - "3306:3306"
     environment:
       MARIADB_ROOT_PASSWORD: ${MY_MARIADB_ROOT_PASSWORD}
     volumes:
@@ -41,8 +39,6 @@ services:
       - KAFKA_CFG_LOG_FLUSH_INTERVAL_MESSAGES=10000
       - KAFKA_CFG_LOG_CLEANUP_POLICY=delete
       - KAFKA_CFG_COMPRESSION_TYPE=snappy
-    ports:
-      - "9092:9092"
     volumes:
       - kafka_data:/bitnami/kafka
     networks:
