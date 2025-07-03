@@ -4,3 +4,7 @@
 [submodule "kimpscan-web"]
 	path = kimpscan-web
 	url = https://github.com/a3magic3pocket/kimpscan-web.git
+[submodule "kimpscan-message"]
+	path = kimpscan-message
+	url = https://github.com/krleeeee/kimpscan-message.git
+	branch = deploy
