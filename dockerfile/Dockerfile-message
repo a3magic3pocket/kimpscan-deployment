@@ -10,7 +10,7 @@ COPY ./kimpscan-message .
 # Gradle wrapper 실행 (빌드)
 
 RUN chmod +x gradlew
-RUN ./gradlew build --no-daemon
+RUN ./gradlew :api:bootJar --no-daemon
 
 # 최종 이미지로 JDK 21만 사용하여 JAR 파일 실행
 FROM amazoncorretto:21-alpine3.20
@@ -19,7 +19,7 @@ FROM amazoncorretto:21-alpine3.20
 WORKDIR /app
 
 # 빌드된 JAR 파일을 복사
-COPY --from=builder /app/build/libs/*.jar /app/spring.jar
+COPY --from=builder /app/api/build/libs/*.jar /app/spring.jar
 
 # Java 애플리케이션 실행
 CMD ["java",  "-Dspring.profiles.active=prod", "-jar", "spring.jar"]
