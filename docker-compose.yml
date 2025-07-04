@@ -85,7 +85,7 @@ services:
   message:
     image: 10.0.1.251:5000/kimpscan-message:0.0.1
     ports:
-      - target: 8081
+      - target: 8080
         published: 8081
         protocol: tcp
         mode: host
