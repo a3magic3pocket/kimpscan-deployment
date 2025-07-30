@@ -6,6 +6,8 @@ services:
       - "5000:5000"   # 호스트의 5000번 포트를 컨테이너의 5000번 포트에 바인딩
     volumes:
       - registry_data:/var/lib/registry
+      - ./registry-config.yml:/etc/docker/registry/config.yml  # ← 변경됨
+    command: ["/etc/docker/registry/config.yml"]  # ← 이 줄은 그대로
     networks:
       - local_net
 
